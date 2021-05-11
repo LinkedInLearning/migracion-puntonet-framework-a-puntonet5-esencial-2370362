@@ -1,6 +1,8 @@
 ﻿using Autofac;
-using eShopLegacyMVC.Models;
-using eShopLegacyMVC.Models.Infrastructure;
+using eShopLegacy.Data;
+using eShopLegacy.Data;
+using eShopLegacy.Data.Infrastructure;
+
 using eShopLegacyMVC.Services;
 
 namespace eShopLegacyMVC.Modules
