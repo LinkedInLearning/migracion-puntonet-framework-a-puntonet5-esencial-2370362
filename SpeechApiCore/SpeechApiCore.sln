@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechApiNet5", "SpeechApiNet5\SpeechApiNet5.csproj", "{6AC8CB84-53A0-4366-BCF2-C7E544E805C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeechApiNet5", "SpeechApiNet5\SpeechApiNet5.csproj", "{6AC8CB84-53A0-4366-BCF2-C7E544E805C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TtsHandler", "..\TtsHandler\TtsHandler\TtsHandler.csproj", "{7092DFBD-F1C8-4CB3-B364-2A814A861007}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TtsHandler", "TtsHandler\TtsHandler.csproj", "{7092DFBD-F1C8-4CB3-B364-2A814A861007}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeechApiCore21", "SpeechApiCore21\SpeechApiCore21.csproj", "{A1D7C53A-96B0-4C6A-82A7-B9DAA9BEBEF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7092DFBD-F1C8-4CB3-B364-2A814A861007}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7092DFBD-F1C8-4CB3-B364-2A814A861007}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7092DFBD-F1C8-4CB3-B364-2A814A861007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1D7C53A-96B0-4C6A-82A7-B9DAA9BEBEF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D7C53A-96B0-4C6A-82A7-B9DAA9BEBEF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D7C53A-96B0-4C6A-82A7-B9DAA9BEBEF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D7C53A-96B0-4C6A-82A7-B9DAA9BEBEF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

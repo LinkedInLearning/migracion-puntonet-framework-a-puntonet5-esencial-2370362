@@ -9,11 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\TtsHandler\TtsHandler\TtsHandler.csproj" />
+    <ProjectReference Include="..\TtsHandler\TtsHandler.csproj" />
   </ItemGroup>
 
 </Project>
