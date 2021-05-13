@@ -1,15 +1,17 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using eShopLegacyMVC.Models;
-using eShopLegacyMVC.Models.Infrastructure;
+
+using eShopLegacy.Data;
+using eShopLegacy.Data.Infrastructure;
+
 using eShopLegacyMVC.Modules;
+
 using log4net;
+
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Diagnostics;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -17,7 +19,7 @@ using System.Web.Routing;
 
 namespace eShopLegacyMVC
 {
-    public class MvcApplication : System.Web.HttpApplication
+	public class MvcApplication : System.Web.HttpApplication
     {
         private static readonly ILog _log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

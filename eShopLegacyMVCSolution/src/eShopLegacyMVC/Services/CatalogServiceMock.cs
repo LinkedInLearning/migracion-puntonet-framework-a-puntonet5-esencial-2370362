@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using eShopLegacy.Data;
-using eShopLegacy.Data;
-using eShopLegacy.Data.Infrastructure;
-
+using eShopLegacyMVC.Models;
+using eShopLegacyMVC.Models.Infrastructure;
 using eShopLegacyMVC.ViewModel;
 
 namespace eShopLegacyMVC.Services

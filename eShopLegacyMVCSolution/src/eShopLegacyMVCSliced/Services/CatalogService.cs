@@ -1,5 +1,5 @@
 ﻿using System;
-using eShopLegacyMVC.Models;
+using eShopLegacy.Data;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;

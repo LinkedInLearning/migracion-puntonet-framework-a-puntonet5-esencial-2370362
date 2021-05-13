@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using eShopLegacyMVC.Models;
+using eShopLegacy.Data;
 using System;
 using eShopLegacyMVC.ViewModel;
 
