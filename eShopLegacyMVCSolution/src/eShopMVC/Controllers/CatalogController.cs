@@ -1,10 +1,12 @@
 ﻿using eShop.Data;
 
+using eShopMVC.Config;
 using eShopMVC.Services;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using System.Collections.Generic;
 using System.Net;
@@ -15,19 +17,24 @@ namespace eShopMVC.Controllers
 	{
 		private readonly ILogger<CatalogController> _logger;
 
-		private ICatalogService _service;
+		private readonly ICatalogService _service;
 
-		public CatalogController(ILogger<CatalogController> logger, ICatalogService service)
+		private readonly PaginationConfig _paginationConfig;
+
+		public CatalogController(ILogger<CatalogController> logger, ICatalogService service, IOptions<PaginationConfig> paginationConfig)
 		{
 			_logger = logger;
 			_service = service;
+			_paginationConfig = paginationConfig.Value;
 		}
 
 		// GET /[?pageSize=3&pageIndex=10]
-		public IActionResult Index(int pageSize = 10, int pageIndex = 0)
+		public IActionResult Index(int? pageSize, int pageIndex = 0)
 		{
+			pageSize ??= _paginationConfig.PageSize;
+
 			_logger.LogInformation($"Now loading... /Catalog/Index?pageSize={pageSize}&pageIndex={pageIndex}");
-			var paginatedItems = _service.GetCatalogItemsPaginated(pageSize, pageIndex);
+			var paginatedItems = _service.GetCatalogItemsPaginated(pageSize.Value, pageIndex);
 			ChangeUriPlaceholder(paginatedItems.Data);
 			return View(paginatedItems);
 		}

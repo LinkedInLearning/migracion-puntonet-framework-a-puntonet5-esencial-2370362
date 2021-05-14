@@ -1,5 +1,6 @@
 using eShop.Data;
 
+using eShopMVC.Config;
 using eShopMVC.Services;
 
 using Microsoft.AspNetCore.Builder;
@@ -48,6 +49,8 @@ namespace eShopMVC
 			{
 				options.AddLog4Net();
 			});
+			
+			services.Configure<PaginationConfig>(Configuration.GetSection(PaginationConfig.ConfigSection));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
