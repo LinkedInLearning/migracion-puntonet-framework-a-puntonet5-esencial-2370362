@@ -35,7 +35,7 @@ namespace eShopMVC
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
 			});
 			services.AddControllersWithViews();
-			var useMockData = Configuration.GetValue<bool>("UseMOckData");
+			var useMockData = Configuration.GetValue<bool>("UseMockData");
 			if (useMockData)
 			{
 				services.AddScoped<ICatalogService, CatalogServiceMock>();
