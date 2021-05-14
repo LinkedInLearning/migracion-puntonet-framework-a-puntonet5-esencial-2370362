@@ -1,6 +1,7 @@
 using eShop.Data;
 
 using eShopMVC.Config;
+using eShopMVC.Extensions;
 using eShopMVC.Services;
 
 using Microsoft.AspNetCore.Builder;
@@ -68,6 +69,7 @@ namespace eShopMVC
 			}
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
+			app.UseUserAgentFilter();
 
 			app.UseRouting();
 
