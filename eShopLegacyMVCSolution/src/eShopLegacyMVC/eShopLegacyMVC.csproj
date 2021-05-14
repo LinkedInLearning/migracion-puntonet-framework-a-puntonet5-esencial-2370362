@@ -243,6 +243,7 @@
     <Content Include="Models\Infrastructure\dbo.catalog_type_hilo.Sequence.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="passwords.txt" />
     <Content Include="Pics\1.png" />
     <Content Include="Pics\10.png" />
     <Content Include="Pics\11.png" />
