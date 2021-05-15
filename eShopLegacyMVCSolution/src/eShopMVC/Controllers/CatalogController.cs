@@ -23,17 +23,14 @@ namespace eShopMVC.Controllers
 
 		private readonly ICountryService _countryService;
 
-		private readonly HttpContext _httpContext;
-
 		private readonly PaginationConfig _paginationConfig;
 
-		public CatalogController(ILogger<CatalogController> logger, ICatalogService service, IOptions<PaginationConfig> paginationConfig, ICountryService countryService, IHttpContextAccessor httpContextAccessor)
+		public CatalogController(ILogger<CatalogController> logger, ICatalogService service, IOptions<PaginationConfig> paginationConfig, ICountryService countryService)
 		{
 			_logger = logger;
 			_service = service;
 			_paginationConfig = paginationConfig.Value;
 			_countryService = countryService;
-			_httpContext = httpContextAccessor.HttpContext;
 		}
 
 		// GET /[?pageSize=3&pageIndex=10]
@@ -42,7 +39,7 @@ namespace eShopMVC.Controllers
 			pageSize ??= _paginationConfig.PageSize;
 
 			_logger.LogInformation($"Now loading... /Catalog/Index?pageSize={pageSize}&pageIndex={pageIndex}");
-			var country = await _countryService.GetCountryByIpAddress(_httpContext.Connection.RemoteIpAddress.ToString());
+			var country = await _countryService.GetCountryByIpAddress(HttpContext.Connection.RemoteIpAddress.ToString());
 			var paginatedItems = _service.GetCatalogItemsPaginated(pageSize.Value, pageIndex, country);
 			ChangeUriPlaceholder(paginatedItems.Data);
 			return View(paginatedItems);
