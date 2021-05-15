@@ -25,7 +25,7 @@ namespace eShopMVC.Api
 		}
 
 		[HttpGet]
-		public PaginatedItemsViewModel<CatalogItem> GetItems(int pageSize = 10, int pageIndex = 1)
+		public ActionResult<PaginatedItemsViewModel<CatalogItem>> GetItems(int pageSize = 10, int pageIndex = 1)
 		{
 			return _catalogService.GetCatalogItemsPaginated(pageSize, pageIndex);
 		}
