@@ -10,7 +10,7 @@
 	</p>
 	@await Component.InvokeAsync("CatalogCounter")
 
-	@Html.Partial("CatalogTable", Model.Data)
+	<partial name="CatalogTable" for="Data" />
 
 	<div class="esh-pager">
 		<div class="container">
