@@ -70,5 +70,10 @@ namespace eShopMVC.Services
 		{
 			db.Dispose();
 		}
+
+		public int GetItemsCount()
+		{
+			return db.CatalogItems.Count();
+		}
 	}
 }

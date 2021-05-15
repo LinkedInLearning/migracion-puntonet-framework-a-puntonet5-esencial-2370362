@@ -8,6 +8,7 @@
     <p class="esh-link-wrapper">
         @Html.ActionLink("Create New", "Create", null, new { @class = "btn esh-button esh-button-primary" })
     </p>
+	<p>@{ Html.RenderAction("GetTotalItems"); }</p>
 
     @Html.Partial("CatalogTable", Model.Data)
 
