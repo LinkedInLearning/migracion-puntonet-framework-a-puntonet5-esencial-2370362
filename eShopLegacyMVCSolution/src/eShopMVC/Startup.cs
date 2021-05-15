@@ -4,6 +4,7 @@ using eShopMVC.Config;
 using eShopMVC.Extensions;
 using eShopMVC.Services;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -46,7 +47,13 @@ namespace eShopMVC
 			{
 				services.AddScoped<ICatalogService, CatalogService>();
 			}
-
+			services.AddSingleton<IUserService, UserService>();
+			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie(options =>
+				{
+					options.ReturnUrlParameter = "returnUrl";
+					options.LoginPath = "/login";
+    });
 			services.Configure<PaginationConfig>(Configuration.GetSection(PaginationConfig.ConfigSection));
 		}
 
@@ -68,17 +75,17 @@ namespace eShopMVC
 			// app.UseUserAgentFilter();
 
 			app.UseRouting();
-
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{
-			endpoints.MapControllerRoute(
-					name: "arias",
-					pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-			endpoints.MapControllerRoute(
-					name: "default",
-					pattern: "{controller=catalog}/{action=Index}/{id?}");
+				endpoints.MapControllerRoute(
+						name: "arias",
+						pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+				endpoints.MapControllerRoute(
+						name: "default",
+						pattern: "{controller=catalog}/{action=Index}/{id?}");
 			});
 		}
 	}

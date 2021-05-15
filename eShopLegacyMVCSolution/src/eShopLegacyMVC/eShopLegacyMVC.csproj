@@ -215,7 +215,13 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Api\CatalogController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PicController.cs" />
+    <Compile Include="CustomMembership\CustomMembershipProvider.cs" />
+    <Compile Include="CustomMembership\CustomMembershipUser.cs" />
+    <Compile Include="CustomMembership\CustomPrincipal.cs" />
+    <Compile Include="CustomMembership\CustomRoleProvider.cs" />
+    <Compile Include="CustomMembership\Role.cs" />
     <Compile Include="Models\Infrastructure\CatalogDBInitializer.cs" />
     <Compile Include="Models\CatalogItemHiLoGenerator.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
@@ -227,6 +233,7 @@
     <Compile Include="Models\CatalogItem.cs" />
     <Compile Include="Models\CatalogType.cs" />
     <Compile Include="Models\Infrastructure\PreconfiguredData.cs" />
+    <Compile Include="Models\LoginView.cs" />
     <Compile Include="Modules\ApplicationModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CatalogService.cs" />
@@ -374,6 +381,8 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Catalog\_ViewCounterPartial.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
