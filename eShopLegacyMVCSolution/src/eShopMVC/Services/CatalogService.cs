@@ -18,7 +18,7 @@ namespace eShopMVC.Services
 			this.db = db;
 		}
 
-		public PaginatedItemsViewModel<CatalogItem> GetCatalogItemsPaginated(int pageSize, int pageIndex)
+		public PaginatedItemsViewModel<CatalogItem> GetCatalogItemsPaginated(int pageSize, int pageIndex, string country = null)
 		{
 			var totalItems = db.CatalogItems.LongCount();
 

@@ -16,7 +16,7 @@ namespace eShopMVC.Services
             catalogItems = new List<CatalogItem>(PreconfiguredData.GetPreconfiguredCatalogItems());
         }
 
-        public PaginatedItemsViewModel<CatalogItem> GetCatalogItemsPaginated(int pageSize = 10, int pageIndex = 0)
+        public PaginatedItemsViewModel<CatalogItem> GetCatalogItemsPaginated(int pageSize = 10, int pageIndex = 0, string country = null)
         {
             var items = ComposeCatalogItems(catalogItems);
             

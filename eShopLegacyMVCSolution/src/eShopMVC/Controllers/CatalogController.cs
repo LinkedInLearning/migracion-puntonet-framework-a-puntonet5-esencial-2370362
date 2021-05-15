@@ -3,6 +3,7 @@
 using eShopMVC.Config;
 using eShopMVC.Services;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Options;
 
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace eShopMVC.Controllers
 {
@@ -19,22 +21,29 @@ namespace eShopMVC.Controllers
 
 		private readonly ICatalogService _service;
 
+		private readonly ICountryService _countryService;
+
+		private readonly HttpContext _httpContext;
+
 		private readonly PaginationConfig _paginationConfig;
 
-		public CatalogController(ILogger<CatalogController> logger, ICatalogService service, IOptions<PaginationConfig> paginationConfig)
+		public CatalogController(ILogger<CatalogController> logger, ICatalogService service, IOptions<PaginationConfig> paginationConfig, ICountryService countryService, IHttpContextAccessor httpContextAccessor)
 		{
 			_logger = logger;
 			_service = service;
 			_paginationConfig = paginationConfig.Value;
+			_countryService = countryService;
+			_httpContext = httpContextAccessor.HttpContext;
 		}
 
 		// GET /[?pageSize=3&pageIndex=10]
-		public IActionResult Index(int? pageSize, int pageIndex = 0)
+		public async Task<IActionResult> Index(int? pageSize, int pageIndex = 0)
 		{
 			pageSize ??= _paginationConfig.PageSize;
 
 			_logger.LogInformation($"Now loading... /Catalog/Index?pageSize={pageSize}&pageIndex={pageIndex}");
-			var paginatedItems = _service.GetCatalogItemsPaginated(pageSize.Value, pageIndex);
+			var country = await _countryService.GetCountryByIpAddress(_httpContext.Connection.RemoteIpAddress.ToString());
+			var paginatedItems = _service.GetCatalogItemsPaginated(pageSize.Value, pageIndex, country);
 			ChangeUriPlaceholder(paginatedItems.Data);
 			return View(paginatedItems);
 		}

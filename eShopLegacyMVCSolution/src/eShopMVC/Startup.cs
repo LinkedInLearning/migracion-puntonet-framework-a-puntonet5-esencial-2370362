@@ -5,6 +5,7 @@ using eShopMVC.Services;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +46,9 @@ namespace eShopMVC
 			{
 				services.AddScoped<ICatalogService, CatalogService>();
 			}
+
+			services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+			services.AddSingleton<ICountryService, CountryService>();
 			services.AddLogging(options =>
 			{
 				options.AddLog4Net();

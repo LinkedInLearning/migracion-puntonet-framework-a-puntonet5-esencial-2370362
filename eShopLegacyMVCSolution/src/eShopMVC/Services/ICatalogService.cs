@@ -11,7 +11,7 @@ namespace eShopMVC.Services
 	{
 		CatalogItem FindCatalogItem(int id);
 		IEnumerable<CatalogBrand> GetCatalogBrands();
-		PaginatedItemsViewModel<CatalogItem> GetCatalogItemsPaginated(int pageSize, int pageIndex);
+		PaginatedItemsViewModel<CatalogItem> GetCatalogItemsPaginated(int pageSize, int pageIndex, string country = null);
 		IEnumerable<CatalogType> GetCatalogTypes();
 		void CreateCatalogItem(CatalogItem catalogItem);
 		void UpdateCatalogItem(CatalogItem catalogItem);
