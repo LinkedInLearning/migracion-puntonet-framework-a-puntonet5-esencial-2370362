@@ -29,5 +29,12 @@ namespace eShopMVC.Api
 		{
 			return _catalogService.GetCatalogItemsPaginated(pageSize, pageIndex);
 		}
+
+		[HttpPost]
+		public IActionResult Create([Bind(include: "Id,Name,Description,Price,PictureFileName,CatalogTypeId,CatalogBrandId,AvailableStock,RestockThreshold,MaxStockThreshold,OnReorder")] CatalogItem catalogItem)
+		{
+			_catalogService.CreateCatalogItem(catalogItem);
+			return Created($"/api/catalog/{catalogItem.Id}", catalogItem);
+		}
 	}
 }

@@ -65,7 +65,7 @@ namespace eShopMVC
 			}
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
-			app.UseUserAgentFilter();
+			// app.UseUserAgentFilter();
 
 			app.UseRouting();
 
