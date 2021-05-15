@@ -26,8 +26,7 @@ namespace eShopMVC.Controllers
 		}
 
 		// GET: Pic/5.png
-		[HttpGet]
-		[Route("items/{catalogItemId:int}/pic", Name = GetPicRouteName)]
+		[HttpGet("items/{catalogItemId:int}/pic", Name = GetPicRouteName)]
 		public IActionResult Index(int catalogItemId)
 		{
 			_logger.LogInformation($"Now loading... /items/Index?{catalogItemId}/pic");

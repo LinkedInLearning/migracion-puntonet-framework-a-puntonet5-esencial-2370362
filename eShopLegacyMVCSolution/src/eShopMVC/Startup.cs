@@ -77,7 +77,10 @@ namespace eShopMVC
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapControllerRoute(
+			endpoints.MapControllerRoute(
+					name: "arias",
+					pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+			endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=catalog}/{action=Index}/{id?}");
 			});
