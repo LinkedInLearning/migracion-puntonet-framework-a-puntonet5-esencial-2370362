@@ -46,11 +46,7 @@ namespace eShopMVC
 			{
 				services.AddScoped<ICatalogService, CatalogService>();
 			}
-			services.AddLogging(options =>
-			{
-				options.AddLog4Net();
-			});
-			
+
 			services.Configure<PaginationConfig>(Configuration.GetSection(PaginationConfig.ConfigSection));
 		}
 

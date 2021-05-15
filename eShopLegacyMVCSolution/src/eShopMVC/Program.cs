@@ -22,6 +22,10 @@ namespace eShopMVC
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
-				});
+				})
+			.ConfigureLogging(logging =>
+			{
+				logging.AddLog4Net();
+			});
 	}
 }
