@@ -7,20 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace WebFormApp
 {
+
+
 	public partial class SiteMaster
 	{
 
 		/// <summary>
-		/// HeadContent control.
+		/// NavMenu control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+		protected global::WebFormApp.NavMenu NavMenu;
 
 		/// <summary>
 		/// MainContent control.
