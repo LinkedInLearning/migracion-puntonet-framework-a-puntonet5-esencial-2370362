@@ -13,12 +13,12 @@ namespace eShopMVC.Controllers
 		private readonly ILogger<PicController> _logger;
 		private readonly ICatalogService _service;
 
-		private readonly IHostingEnvironment _hostingEnvironment;
+		private readonly IWebHostEnvironment _hostingEnvironment;
 
 		public const string GetPicRouteName = "GetPicRouteTemplate";
 
 
-		public PicController(ILogger<PicController> logger, ICatalogService service, IHostingEnvironment hostingEnvironment)
+		public PicController(ILogger<PicController> logger, ICatalogService service, IWebHostEnvironment hostingEnvironment)
 		{
 			_logger = logger;
 			_service = service;
