@@ -50,9 +50,8 @@ namespace eShopMVC.ApiTests
 			{
 				var anchor = actionLink as IHtmlAnchorElement;
 				var url = anchor.Href;
-				var editResponse = await _client.GetAsync(url);
-				content = await HtmlHelpers.GetDocumentAsync(editResponse);
-				Assert.Equal(HttpStatusCode.OK, editResponse.StatusCode);
+				var response = await _client.GetAsync(url);
+				Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 			}
 		}
 	}

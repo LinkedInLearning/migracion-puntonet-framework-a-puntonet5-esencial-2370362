@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 using eShop.Data;
 
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +5,9 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
+using System;
+using System.Linq;
 
 
 namespace eShopMVC.ApiTests
@@ -40,15 +40,6 @@ namespace eShopMVC.ApiTests
 						.GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
 
 					db.Database.EnsureCreated();
-
-					try
-					{
-					}
-					catch (Exception ex)
-					{
-						logger.LogError(ex, "An error occurred seeding the " +
-							"database with test messages. Error: {Message}", ex.Message);
-					}
 				}
 			});
 		}
