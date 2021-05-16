@@ -26,6 +26,7 @@ namespace eShopLegacyMVC.Api
 			return _catalogService.GetCatalogItemsPaginated(pageSize, pageIndex);
 		}
 
+		[HttpPost]
 		public IHttpActionResult Create(CatalogItem catalogItem)
 		{
 			if (!ModelState.IsValid)
