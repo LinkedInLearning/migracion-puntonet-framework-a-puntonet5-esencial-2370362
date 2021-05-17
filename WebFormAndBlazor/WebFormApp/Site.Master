@@ -41,6 +41,8 @@
 
 <CustomControls:NavMenu id="NavMenu" runAt="server" />
         <div class="container body-content">
+            <p>Comienza el body</p>
+
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
