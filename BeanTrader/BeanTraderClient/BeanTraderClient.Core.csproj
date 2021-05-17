@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<RootNamespace>BeanTraderClient</RootNamespace>
+		<AssemblyName>BeanTraderClient</AssemblyName>
+		<ApplicationIcon>BeanTrader.ico</ApplicationIcon>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+	<ItemGroup>
+		<Resource Include="**\*.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Remove="Resources\Themes\Default.Accent.xaml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Resources\Themes\Default.Accent.xaml" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Castle.Windsor">
+			<Version>4.1.1</Version>
+		</PackageReference>
+		<PackageReference Include="Hyak.Common">
+			<Version>1.2.2</Version>
+		</PackageReference>
+		<PackageReference Include="MahApps.Metro">
+			<Version>1.6.5</Version>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+			<Version>2.9.12</Version>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Rest.ClientRuntime.Azure">
+			<Version>3.3.19</Version>
+		</PackageReference>
+		<PackageReference Include="Nito.AsyncEx">
+			<Version>5.1.0</Version>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="BeanTrader.pfx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>
