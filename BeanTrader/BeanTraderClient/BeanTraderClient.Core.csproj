@@ -36,6 +36,7 @@
 		<PackageReference Include="Microsoft.Rest.ClientRuntime.Azure">
 			<Version>3.3.19</Version>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
 		<PackageReference Include="Nito.AsyncEx">
 			<Version>5.1.0</Version>
 		</PackageReference>
