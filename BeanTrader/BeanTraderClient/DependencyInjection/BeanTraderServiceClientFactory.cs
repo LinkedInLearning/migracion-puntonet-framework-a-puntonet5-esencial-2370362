@@ -1,4 +1,6 @@
-﻿using System.ServiceModel;
+﻿using BeanTrader.Models;
+
+using System.ServiceModel;
 
 namespace BeanTraderClient.DependencyInjection
 {
