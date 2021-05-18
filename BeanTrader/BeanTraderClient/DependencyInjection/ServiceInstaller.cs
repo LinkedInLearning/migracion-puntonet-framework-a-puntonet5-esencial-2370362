@@ -1,4 +1,6 @@
-﻿using BeanTraderClient.Services;
+﻿using BeanTrader.Models;
+
+using BeanTraderClient.Services;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;

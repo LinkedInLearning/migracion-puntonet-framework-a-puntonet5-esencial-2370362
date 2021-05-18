@@ -34,7 +34,7 @@ namespace BeanTraderClient.Services
                         {
                             var newClient = ClientFactory.GetServiceClient();
                             SetClientCredentials(newClient);
-                            newClient.Open();
+                            await newClient.OpenAsync();
                             client = newClient;
                         }
                     }
