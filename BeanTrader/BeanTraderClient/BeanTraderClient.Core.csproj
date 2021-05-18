@@ -16,7 +16,9 @@
 	  <Page Remove="Resources\Themes\Default.Accent.xaml" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Content Include="Resources\Themes\Default.Accent.xaml" />
+	  <Content Include="Resources\Themes\Default.Accent.xaml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Castle.Windsor">
