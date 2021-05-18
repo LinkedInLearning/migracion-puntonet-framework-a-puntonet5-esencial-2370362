@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net5.0</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<RootNamespace>BeanTraderClient</RootNamespace>
 		<AssemblyName>BeanTraderClient</AssemblyName>
@@ -42,8 +42,14 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
+	  <Reference Include="System.ServiceModel" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Update="BeanTrader.pfx">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+	<ItemGroup>
+	  <WCFMetadata Include="Connected Services" />
 	</ItemGroup>
 </Project>
