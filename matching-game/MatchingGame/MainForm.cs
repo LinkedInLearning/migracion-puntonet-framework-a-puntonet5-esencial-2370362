@@ -44,7 +44,7 @@ namespace MatchingGame
 				{
 					var btn = tableLayoutPanel1.GetControlFromPosition(w, h);
 					btn.ForeColor = _game.IsOpen(w, h) ? Color.Black : btn.BackColor;
-					btn.AccessibleName= _game.IsOpen(w, h) ? btn.Text : "Boca abajo";
+					btn.AccessibleName= _game.IsOpen(w, h) ? btn.Text : "Face down";
 				}
 			}
 		}
