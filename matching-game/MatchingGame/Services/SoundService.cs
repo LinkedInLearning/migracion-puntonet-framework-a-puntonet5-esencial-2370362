@@ -22,6 +22,8 @@ namespace MatchingGame.Services
 			Edge
 		}
 
+		private readonly Dictionary<Sound, SoundPlayer> _players = new Dictionary<Sound, SoundPlayer>();
+
 		public void PlaySound(Sound sound)
 		{
 			string fileName;
@@ -35,16 +37,33 @@ namespace MatchingGame.Services
 				case Sound.Edge: fileName = "Edge"; break;
 				default: throw new ArgumentOutOfRangeException(nameof(sound));
 			}
+			SoundPlayer player;
 
-			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"MatchingGame.Resources.Sounds.{fileName}.wav");
-			var player = new SoundPlayer();
-			player.Stream = stream;
-			Task.Run(() => player.PlaySync())
-				.ContinueWith((task) =>
+			if (_players.ContainsKey(sound))
+			{
+				player = _players[sound];
+			}
+			else
+			{
+				var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"MatchingGame.Resources.Sounds.{fileName}.wav");
+				player = new SoundPlayer();
+				player.Stream = stream;
+				_players.Add(sound, player);
+			}
+			player.Play();
+
+		}
+
+		public void Dispose()
+		{
+			if (_players.Any())
+			{
+				foreach (var player in _players.Values)
 				{
+					player.Stream?.Dispose();
 					player.Dispose();
-					stream.Dispose();
-				});
+				}
+			}
 		}
 	}
 }
