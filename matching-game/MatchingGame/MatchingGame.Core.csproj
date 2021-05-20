@@ -10,9 +10,6 @@
 
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\MatchingGame.Logic\MatchingGame.Logic.csproj" />
-	</ItemGroup>
-	<ItemGroup>
 		<PackageReference Include="MetroFramework">
 			<Version>1.2.0.3</Version>
 		</PackageReference>
