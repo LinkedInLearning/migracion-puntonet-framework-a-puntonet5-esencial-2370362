@@ -3,106 +3,134 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using MatchingGame.Services;
 
 namespace MatchingGame
 {
-    public partial class MainForm : MetroForm
-    {
-        private Game _game;
+	public partial class MainForm : MetroForm
+	{
+		private Game _game;
 
-        public MainForm()
-        {
-            InitializeComponent();
-        }
+		private readonly ISoundService _soundService;
 
-        private void StartNewGame()
-        {
-            _game = Game.Create();
+		public MainForm(ISoundService soundService)
+		{
+			_soundService = soundService;
+			InitializeComponent();
+		}
 
-            for (var i = 0; i < tableLayoutPanel1.Controls.Count; i++)
-            {
-                var btn = (Button)tableLayoutPanel1.Controls[i];
-                var column = tableLayoutPanel1.GetColumn(btn);
-                var row = tableLayoutPanel1.GetRow(btn);
+		private void StartNewGame()
+		{
+			_game = Game.Create();
 
-                btn.Text = _game.GetCard(column, row).ToString();
-                btn.ForeColor = btn.BackColor;
-            }
+			for (var i = 0; i < tableLayoutPanel1.Controls.Count; i++)
+			{
+				var btn = (Button)tableLayoutPanel1.Controls[i];
+				var column = tableLayoutPanel1.GetColumn(btn);
+				var row = tableLayoutPanel1.GetRow(btn);
 
-            UpdateCards();
-        }
+				btn.Text = _game.GetCard(column, row).ToString();
+				btn.ForeColor = btn.BackColor;
+			}
 
-        private void UpdateCards()
-        {
-            for (var w = 0; w < _game.Width; w++)
-            {
-                for (var h = 0; h < _game.Height; h++)
-                {
-                    var btn = tableLayoutPanel1.GetControlFromPosition(w, h);
-                    btn.ForeColor = _game.IsOpen(w, h) ? Color.Black : btn.BackColor;
-                }
-            }
-        }
+			UpdateCards();
+		}
 
-        private void btn_Click(object sender, EventArgs e)
-        {
-            if (closeCardTimer.Enabled == true)
-                return;
+		private void UpdateCards()
+		{
+			for (var w = 0; w < _game.Width; w++)
+			{
+				for (var h = 0; h < _game.Height; h++)
+				{
+					var btn = tableLayoutPanel1.GetControlFromPosition(w, h);
+					btn.ForeColor = _game.IsOpen(w, h) ? Color.Black : btn.BackColor;
+				}
+			}
+		}
 
-            if (sender is Button btn)
-            {
-                var column = tableLayoutPanel1.GetColumn(btn);
-                var row = tableLayoutPanel1.GetRow(btn);
+		private async void btn_Click(object sender, EventArgs e)
+		{
+			if (closeCardTimer.Enabled)
+			{
+				return;
+			}
 
-                if (_game.IsOpen(column, row))
-                    return;
+			if (sender is Button btn)
+			{
+				var column = tableLayoutPanel1.GetColumn(btn);
+				var row = tableLayoutPanel1.GetRow(btn);
 
-                _game.OpenCard(column, row);
-                UpdateCards();
+				if (_game.IsOpen(column, row))
+				{
+					return;
+				}
 
-                if (_game.RemainingCardsInTurn > 0)
-                    return;
+				_game.OpenCard(column, row);
+				_ = _soundService.PlaySound(SoundService.Sound.FlipCard);
+				UpdateCards();
 
-                CheckForWinner();
+				if (_game.RemainingCardsInTurn > 0)
+				{
+					return;
+				}
 
-                if (_game.CompleteTurn())
-                    return;
+				CheckForWinner();
 
-                closeCardTimer.Start();
-            }
-        }
+				if (_game.CompleteTurn())
+				{
+					_ = _soundService.PlaySound(SoundService.Sound.Match);
+					return;
+				}
+				else
+				{
+					_ = _soundService.PlaySound(SoundService.Sound.NotMatch);
+				}
 
-        private void CheckForWinner()
-        {
-            if (!_game.IsComplete())
-                return;
+				closeCardTimer.Start();
+			}
+		}
 
-            var bestScore = GameSettings.Instance.BestScore;
-            var currentScore = _game.Turns;
-            GameSettings.Instance.UpdateScore(_game.Turns);
+		private void CheckForWinner()
+		{
+			if (!_game.IsComplete())
+			{
+				return;
+			}
 
-            string text;
-            if (bestScore == 0)
-                text = $"It took you {currentScore} turns to complete. Keep it up!";
-            else if (bestScore < currentScore)
-                text = $"It took you {currentScore - bestScore} more turns than your previous best. Try harder!";
-            else
-                text = $"You set a new best with only {currentScore} turns!";
+			var bestScore = GameSettings.Instance.BestScore;
+			var currentScore = _game.Turns;
+			GameSettings.Instance.UpdateScore(_game.Turns);
 
-            MessageBox.Show(text, "Congratulations!");
-            StartNewGame();
-        }
+			string text;
+			if (bestScore == 0)
+			{
+				text = $"It took you {currentScore} turns to complete. Keep it up!";
+			}
+			else if (bestScore < currentScore)
+			{
+				text = $"It took you {currentScore - bestScore} more turns than your previous best. Try harder!";
+			}
+			else
+			{
+				text = $"You set a new best with only {currentScore} turns!";
+			}
 
-        private void closeCardTimer_Tick(object sender, EventArgs e)
-        {
-            closeCardTimer.Stop();
-            _game.CloseCards();
-            UpdateCards();
-        }
+			MessageBox.Show(text, "Congratulations!");
+			StartNewGame();
+		}
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            StartNewGame();
-        }
-    }
+		private async void closeCardTimer_Tick(object sender, EventArgs e)
+		{
+			closeCardTimer.Stop();
+			_game.CloseCards();
+			_ = _soundService.PlaySound(SoundService.Sound.TimerFlip);
+
+			UpdateCards();
+		}
+
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			StartNewGame();
+		}
+	}
 }

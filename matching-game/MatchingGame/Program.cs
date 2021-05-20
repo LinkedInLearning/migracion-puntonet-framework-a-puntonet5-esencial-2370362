@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MatchingGame.Services;
+
+using System;
 using System.Windows.Forms;
 
 namespace MatchingGame
@@ -10,7 +12,7 @@ namespace MatchingGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(new SoundService()));
         }
     }
 }
