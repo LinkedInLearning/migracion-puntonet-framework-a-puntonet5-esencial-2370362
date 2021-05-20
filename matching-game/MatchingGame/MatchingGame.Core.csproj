@@ -7,7 +7,6 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RootNamespace>MatchingGame</RootNamespace>
 		<AssemblyName>MatchingGame</AssemblyName>
-
 	</PropertyGroup>
 
 	<ItemGroup>
