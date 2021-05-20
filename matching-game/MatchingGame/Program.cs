@@ -12,7 +12,9 @@ namespace MatchingGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new SoundService()));
+            var soundService = new SoundService();
+            Application.Run(new MainForm(soundService));
+            soundService.Dispose();
         }
     }
 }
