@@ -100,5 +100,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Sounds\NotMatch.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sounds\Edge.wav" />
+    <EmbeddedResource Include="Resources\Sounds\Moving.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

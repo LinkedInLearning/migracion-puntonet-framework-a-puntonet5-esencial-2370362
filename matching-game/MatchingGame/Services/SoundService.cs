@@ -17,7 +17,9 @@ namespace MatchingGame.Services
 			FlipCard,
 			TimerFlip,
 			Match,
-			NotMatch
+			NotMatch,
+			Moving,
+			Edge
 		}
 
 		public async Task PlaySound(Sound sound)
@@ -29,12 +31,13 @@ namespace MatchingGame.Services
 				case Sound.TimerFlip: fileName = "TimerFlip"; break;
 				case Sound.Match: fileName = "Match"; break;
 				case Sound.NotMatch: fileName = "NotMatch"; break;
+				case Sound.Moving: fileName = "Moving"; break;
+				case Sound.Edge: fileName = "Edge"; break;
 				default: throw new ArgumentOutOfRangeException(nameof(sound));
 			}
 
 			using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"MatchingGame.Resources.Sounds.{fileName}.wav"))
 			{
-
 				using (SoundPlayer player = new SoundPlayer())
 				{
 					player.Stream = stream;

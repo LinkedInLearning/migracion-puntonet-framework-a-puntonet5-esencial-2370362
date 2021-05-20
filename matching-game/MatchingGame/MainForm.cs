@@ -48,7 +48,7 @@ namespace MatchingGame
 			}
 		}
 
-		private async void btn_Click(object sender, EventArgs e)
+		private void btn_Click(object sender, EventArgs e)
 		{
 			if (closeCardTimer.Enabled)
 			{
@@ -119,7 +119,7 @@ namespace MatchingGame
 			StartNewGame();
 		}
 
-		private async void closeCardTimer_Tick(object sender, EventArgs e)
+		private void closeCardTimer_Tick(object sender, EventArgs e)
 		{
 			closeCardTimer.Stop();
 			_game.CloseCards();
@@ -131,6 +131,91 @@ namespace MatchingGame
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			StartNewGame();
+			btn1.Focus();
+		}
+
+
+
+		private void MainForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+		{
+			_soundService.PlaySound(SoundService.Sound.Moving);
+		}
+
+		protected override bool ProcessDialogKey(Keys keyData)
+		{
+			if (keyData == Keys.Right || keyData == Keys.Left || keyData == Keys.Up || keyData == Keys.Down)
+			{
+				return false;
+			}
+			return base.ProcessDialogKey(keyData);
+		}
+
+		private void MainForm_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyData == Keys.Left || e.KeyData == Keys.Right || e.KeyData == Keys.Up || e.KeyData == Keys.Down)
+			{
+				e.Handled = true;
+				var control = this.ActiveControl;
+				var column = tableLayoutPanel1.GetColumn(control);
+				var row = tableLayoutPanel1.GetRow(control);
+
+				if (e.KeyData == Keys.Left)
+				{
+					if (column== 0)
+					{
+						_soundService.PlaySound(SoundService.Sound.Edge);
+						return;
+					}
+					else
+					{
+						column--;
+					}
+				}
+				else if (e.KeyData == Keys.Right)
+				{
+					if (column== tableLayoutPanel1.ColumnCount- 1)
+					{
+						_soundService.PlaySound(SoundService.Sound.Edge);
+						return;
+					}
+					else
+					{
+						column++;
+					}
+				}
+
+
+
+
+				if (e.KeyData == Keys.Up)
+				{
+					if (row == 0)
+					{
+						_soundService.PlaySound(SoundService.Sound.Edge);
+						return;
+					}
+					else
+					{
+						row--;
+					}
+				}
+				else if (e.KeyData == Keys.Down)
+				{
+					if (row == tableLayoutPanel1.RowCount- 1)
+					{
+						_soundService.PlaySound(SoundService.Sound.Edge);
+						return;
+					}
+					else
+					{
+						row++;
+					}
+				}
+
+				var newControl = tableLayoutPanel1.GetControlFromPosition(column, row) as Button;
+				newControl.Focus();
+				_soundService.PlaySound(SoundService.Sound.Moving);
+			}
 		}
 	}
 }
