@@ -9,16 +9,36 @@
 		<AssemblyName>MatchingGame</AssemblyName>
 
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Sounds\Edge.wav" />
+	  <None Remove="Resources\Sounds\FlipCard.wav" />
+	  <None Remove="Resources\Sounds\Match.wav" />
+	  <None Remove="Resources\Sounds\Moving.wav" />
+	  <None Remove="Resources\Sounds\NotMatch.wav" />
+	  <None Remove="Resources\Sounds\TimerFlip.wav" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Sounds\Edge.wav" />
+	  <EmbeddedResource Include="Resources\Sounds\FlipCard.wav" />
+	  <EmbeddedResource Include="Resources\Sounds\Match.wav" />
+	  <EmbeddedResource Include="Resources\Sounds\Moving.wav" />
+	  <EmbeddedResource Include="Resources\Sounds\NotMatch.wav" />
+	  <EmbeddedResource Include="Resources\Sounds\TimerFlip.wav" />
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="MetroFramework">
 			<Version>1.2.0.3</Version>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
+		<ProjectReference Include="..\MatchingGame.Logic\MatchingGame.Logic.csproj" />
 		<Compile Update="Properties\Settings.Designer.cs">
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Settings.settings</DependentUpon>
