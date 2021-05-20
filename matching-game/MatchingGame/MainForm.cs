@@ -44,6 +44,7 @@ namespace MatchingGame
 				{
 					var btn = tableLayoutPanel1.GetControlFromPosition(w, h);
 					btn.ForeColor = _game.IsOpen(w, h) ? Color.Black : btn.BackColor;
+					btn.AccessibleName= _game.IsOpen(w, h) ? btn.Text : "Boca abajo";
 				}
 			}
 		}
@@ -66,7 +67,7 @@ namespace MatchingGame
 				}
 
 				_game.OpenCard(column, row);
-				_ = _soundService.PlaySound(SoundService.Sound.FlipCard);
+				_soundService.PlaySound(SoundService.Sound.FlipCard);
 				UpdateCards();
 
 				if (_game.RemainingCardsInTurn > 0)
@@ -78,12 +79,12 @@ namespace MatchingGame
 
 				if (_game.CompleteTurn())
 				{
-					_ = _soundService.PlaySound(SoundService.Sound.Match);
+					_soundService.PlaySound(SoundService.Sound.Match);
 					return;
 				}
 				else
 				{
-					_ = _soundService.PlaySound(SoundService.Sound.NotMatch);
+					_soundService.PlaySound(SoundService.Sound.NotMatch);
 				}
 
 				closeCardTimer.Start();
@@ -123,7 +124,7 @@ namespace MatchingGame
 		{
 			closeCardTimer.Stop();
 			_game.CloseCards();
-			_ = _soundService.PlaySound(SoundService.Sound.TimerFlip);
+			_soundService.PlaySound(SoundService.Sound.TimerFlip);
 
 			UpdateCards();
 		}

@@ -22,7 +22,7 @@ namespace MatchingGame.Services
 			Edge
 		}
 
-		public async Task PlaySound(Sound sound)
+		public void PlaySound(Sound sound)
 		{
 			string fileName;
 			switch (sound)
@@ -36,14 +36,15 @@ namespace MatchingGame.Services
 				default: throw new ArgumentOutOfRangeException(nameof(sound));
 			}
 
-			using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"MatchingGame.Resources.Sounds.{fileName}.wav"))
-			{
-				using (SoundPlayer player = new SoundPlayer())
+			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"MatchingGame.Resources.Sounds.{fileName}.wav");
+			var player = new SoundPlayer();
+			player.Stream = stream;
+			Task.Run(() => player.PlaySync())
+				.ContinueWith((task) =>
 				{
-					player.Stream = stream;
-					await Task.Run(() => player.PlaySync());
-				}
-			}
+					player.Dispose();
+					stream.Dispose();
+				});
 		}
 	}
 }
