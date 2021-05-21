@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLibraryNetFX", "TestLibraryNetFX\TestLibraryNetFX.csproj", "{3D59229E-4E79-47BF-B3C6-01AA602F4E8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLibraryNet5", "TestLibraryNet5\TestLibraryNet5.csproj", "{FDFE512C-E9F6-47A8-B72D-D14085D852FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D59229E-4E79-47BF-B3C6-01AA602F4E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D59229E-4E79-47BF-B3C6-01AA602F4E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D59229E-4E79-47BF-B3C6-01AA602F4E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D59229E-4E79-47BF-B3C6-01AA602F4E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDFE512C-E9F6-47A8-B72D-D14085D852FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDFE512C-E9F6-47A8-B72D-D14085D852FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDFE512C-E9F6-47A8-B72D-D14085D852FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDFE512C-E9F6-47A8-B72D-D14085D852FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F51856D-8A1F-4C66-AEAF-04AB0859065F}
+	EndGlobalSection
+EndGlobal
