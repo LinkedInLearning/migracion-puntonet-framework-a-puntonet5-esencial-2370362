@@ -1,8 +1,6 @@
 # Migración de .NET Framework a .NET 5 esencial
 Este es el repositorio del curso de LinkedIn Learning `Migración de .NET Framework a .NET 5 esencial`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
 
-![Migración de .NET Framework a .NET 5 esencial][lil-thumbnail-url] 
-
 Aprende a migrar tus aplicaciones basadas en .NET Framework a .NET 5, para aprovechar al máximo todas las increíbles características que esta versión tiene para ofrecernos. Descubrirás sus ventajas, como las mejoras de rendimiento y escalabilidad, la generación de código más mantenible o la ejecución de aplicaciones ASP.NET Core en sistemas distintos a Windows. Y, sobre todo, conseguirás evolucionar hacia una tecnología más moderna, que se desarrolla activamente a gran velocidad. Al finalizar este curso, serás capaz de migrar cualquier aplicación ASP.NET Core MVC, WebApi, Winform o WPF a .NET 5.
 Consulte el archivo readme en la rama `main` para obtener instrucciones e información actualizadas.
 
@@ -24,5 +22,5 @@ Las ramas están estructuradas para corresponder a los vídeos del curso. La con
 Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.com/learning/instructors/juan-jose-montiel-perez).
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
-[lil-course-url]: to-be-defined
+[lil-course-url]: https://www.linkedin.com/learning/migracion-de-dot-net-framework-a-dot-net-5-esencial/
 [lil-thumbnail-url]: to-be-defined
