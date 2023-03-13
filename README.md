@@ -25,4 +25,4 @@ Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.c
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
 [lil-course-url]: https://www.linkedin.com/learning/migracion-de-dot-net-framework-a-dot-net-5-esencial/
-[lil-thumbnail-url]: https://media-exp1.licdn.com/dms/image/C560DAQEqFgdJz5_Eag/learning-public-crop_675_1200/0/1627024730138?e=1646960400&v=beta&t=35W9MpvO5RtDRgqiY-DI5p13y0IqNFa7IAYoMDTX1UE
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2370362/2370362-1627023995376-16x9.jpg
